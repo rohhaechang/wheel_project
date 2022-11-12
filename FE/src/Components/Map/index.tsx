@@ -45,6 +45,21 @@ const reducer = (state: any, action: Action) => {
 }
 
 const Map = () => {
+
+  const fetchData = async () => {
+    try {
+      const res = await axios.get('/');
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+    finally {console.log('실행')}
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   /** 내가 있는 현재 위치 */
   const [myLocation, setMyLocation] = useState<{latitude: number; longitude: number} | string>(``);
   /** 검색 주소 */
